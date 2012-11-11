@@ -1,0 +1,51 @@
+diff -p -up moonlight-2.0/src/debug.cpp~ moonlight-2.0/src/debug.cpp
+--- moonlight-2.0/src/debug.cpp~	2009-12-17 03:19:59.000000000 +0100
++++ moonlight-2.0/src/debug.cpp	2009-12-19 19:13:41.000000000 +0100
+@@ -453,7 +453,7 @@ void
+ print_stack_trace_prefix (const char* prefix, int maxframes)
+ {
+ 	char* st = get_stack_trace_prefix (prefix, maxframes);
+-	printf (st);
++	printf ("%s", st);
+ 	g_free (st);
+ }
+ 
+diff -p -up moonlight-2.0/src/messagebox.cpp~ moonlight-2.0/src/messagebox.cpp
+--- moonlight-2.0/src/messagebox.cpp~	2009-12-17 03:19:59.000000000 +0100
++++ moonlight-2.0/src/messagebox.cpp	2009-12-19 19:16:31.000000000 +0100
+@@ -29,7 +29,7 @@ message_box_show (const char *caption, c
+ 						GTK_DIALOG_MODAL,
+ 						GTK_MESSAGE_OTHER,
+ 						bt,
+-						text);
++						    "%s", text);
+ 
+ 	gtk_window_set_title (GTK_WINDOW (widget), caption);
+ 	
+diff -p -up moonlight-2.0/src/openfile.cpp~ moonlight-2.0/src/openfile.cpp
+--- moonlight-2.0/src/openfile.cpp~	2009-12-17 03:19:59.000000000 +0100
++++ moonlight-2.0/src/openfile.cpp	2009-12-19 19:18:00.000000000 +0100
+@@ -124,10 +124,10 @@ isolated_storage_increase_quota_to (cons
+ 						GTK_DIALOG_MODAL,
+ 						GTK_MESSAGE_QUESTION,
+ 						GTK_BUTTONS_YES_NO,
+-						primary_text);
++						"%s", primary_text);
+ 
+ 	gtk_window_set_title (GTK_WINDOW (widget), PACKAGE_STRING);
+-	gtk_message_dialog_format_secondary_markup (GTK_MESSAGE_DIALOG (widget), secondary_text);
++	gtk_message_dialog_format_secondary_markup (GTK_MESSAGE_DIALOG (widget), "%s", secondary_text);
+ 
+ 	gboolean result = (gtk_dialog_run (GTK_DIALOG (widget)) == GTK_RESPONSE_YES);
+ 	gtk_widget_destroy (widget);
+--- moonlight-2.0/test/uri-test.cpp~	2009-12-17 03:20:11.000000000 +0100
++++ moonlight-2.0/test/uri-test.cpp	2009-12-19 21:11:41.000000000 +0100
+@@ -39,7 +39,7 @@
+     if (user_msg)
+       fprintf (stderr, "FAILURE:  %s: %s\n", msg, user_msg);
+     else
+-      fprintf (stderr, msg);
++      fprintf (stderr, "%s", msg);
+   }
+ };
+ 

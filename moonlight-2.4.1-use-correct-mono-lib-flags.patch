@@ -1,0 +1,11 @@
+--- moonlight-2.4.1/plugin/Makefile.am.mono_libs~	2011-07-12 10:06:49.978422767 +0200
++++ moonlight-2.4.1/plugin/Makefile.am	2011-07-12 10:07:57.737468912 +0200
+@@ -26,7 +26,7 @@ INCLUDES = \
+ libmoonloader_la_LDFLAGS = \
+ 	-avoid-version -rpath $(pluginlibdir) -R $(pluginlibdir) -R $(libdir)
+ 
+-libmoonloader_la_LIBADD = -ldl $(LOADER_LIBS) -lmono
++libmoonloader_la_LIBADD = -ldl $(LOADER_LIBS) $(MONO_LIBS)
+ 
+ libmoonloader_la_SOURCES = \
+ 	plugin-proxy.cpp

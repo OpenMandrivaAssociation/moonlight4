@@ -1,0 +1,42 @@
+diff -p -up moonlight-2.0/plugin/Makefile.am.fix-linking moonlight-2.0/plugin/Makefile.am
+--- moonlight-2.0/plugin/Makefile.am.fix-linking	2009-12-17 03:19:59.000000000 +0100
++++ moonlight-2.0/plugin/Makefile.am	2009-12-19 21:09:20.000000000 +0100
+@@ -19,7 +19,7 @@ INCLUDES = \
+ libmoonloader_la_LDFLAGS = \
+ 	-avoid-version -rpath $(pluginlibdir) -R $(pluginlibdir) -R $(libdir)
+ 
+-libmoonloader_la_LIBADD = -ldl $(LOADER_LIBS)
++libmoonloader_la_LIBADD = -ldl $(LOADER_LIBS) -lmono
+ 
+ libmoonloader_la_SOURCES = \
+ 	plugin-proxy.cpp
+@@ -27,7 +27,7 @@ libmoonloader_la_SOURCES = \
+ #--- libmoonloaderxpi -------------------
+ libmoonloaderxpi_la_LDFLAGS = $(libmoonloader_la_LDFLAGS) -rpath /nowhere
+ 
+-libmoonloaderxpi_la_LIBADD = $(libmoonloader_la_LIBADD)
++libmoonloaderxpi_la_LIBADD = $(libmoonloader_la_LIBADD) ../src/libmoonxpi.la
+ 
+ libmoonloaderxpi_la_SOURCES = $(libmoonloader_la_SOURCES)
+ 
+@@ -69,7 +69,7 @@ libmoonplugin_la_SOURCES = \
+ #--- libmoonpluginxpi ----------------------
+ libmoonpluginxpi_la_LDFLAGS = $(libmoonplugin_la_LDFLAGS) -rpath /nowhere
+ 
+-libmoonpluginxpi_la_LIBADD = $(PLUGIN_XPI_LIBS)
++libmoonpluginxpi_la_LIBADD = $(PLUGIN_XPI_LIBS) ../src/libmoonxpi.la
+ 
+ libmoonpluginxpi_la_SOURCES = $(libmoonplugin_la_SOURCES)
+ 
+diff -p -up moonlight-2.0/src/Makefile.am.fix-linking moonlight-2.0/src/Makefile.am
+--- moonlight-2.0/src/Makefile.am.fix-linking	2009-12-17 04:15:10.000000000 +0100
++++ moonlight-2.0/src/Makefile.am	2009-12-19 20:37:24.000000000 +0100
+@@ -271,7 +271,7 @@ libmoon_la_LIBADD = $(MOON_LIBS)
+ 
+ libmoonxpi_la_LDFLAGS = -rpath /nowhere
+ 
+-libmoonxpi_la_LIBADD = $(MOON_XPI_LIBS)
++libmoonxpi_la_LIBADD = $(MOON_XPI_LIBS) $(FFMPEG_LIBS) libmoon.la
+ 
+ libmoonxpi_la_SOURCES = $(libmoon_la_SOURCES)
+ 

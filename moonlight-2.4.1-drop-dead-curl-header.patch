@@ -1,0 +1,24 @@
+diff --git a/plugin/curl/curl-bridge.h b/plugin/curl/curl-bridge.h
+index 6568cf6..6e4dac1 100644
+--- a/plugin/curl/curl-bridge.h
++++ b/plugin/curl/curl-bridge.h
+@@ -25,7 +25,6 @@ class CurlBrowserBridge;
+ #include "timemanager.h"
+ 
+ #include <curl/curl.h>
+-#include <curl/types.h>
+ #include <curl/easy.h>
+ #include <pthread.h>
+ 
+diff --git a/plugin/curl/curl-http.h b/plugin/curl/curl-http.h
+index f856f7c..8cb3467 100644
+--- a/plugin/curl/curl-http.h
++++ b/plugin/curl/curl-http.h
+@@ -20,7 +20,6 @@ class CurlDownloaderResponse;
+ 
+ #include <glib.h>
+ #include <curl/curl.h>
+-#include <curl/types.h>
+ #include <curl/easy.h>
+ 
+ #include "moonbuild.h"

@@ -1,0 +1,13 @@
+Index: libgc/include/private/gc_locks.h
+===================================================================
+--- libgc/include/private/gc_locks.h	(revision 153123)
++++ libgc/include/private/gc_locks.h	(working copy)
+@@ -403,7 +403,7 @@
+          {
+ 	   char result;
+ 	   __asm__ __volatile__("lock; cmpxchgl %2, %0; setz %1"
+-	    	: "+m"(*(addr)), "=r"(result)
++	    	: "+m"(*(addr)), "=q"(result)
+ 		: "r" (new_val), "a"(old) : "memory");
+ 	   return (GC_bool) result;
+          }
