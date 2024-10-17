@@ -23,7 +23,7 @@ Patch12: moonlight-2.4.1-use-correct-mono-lib-flags.patch
 Patch13: moonlight-2.4.1-drop-dead-curl-header.patch
 License: LGPLv2
 Group: System/Libraries
-Url: http://www.mono-project.com/Moonlight
+Url: https://www.mono-project.com/Moonlight
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: ffmpeg-devel
 BuildRequires: libxtst-devel
