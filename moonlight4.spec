@@ -25,6 +25,11 @@ License: LGPLv2
 Group: System/Libraries
 Url: https://www.mono-project.com/Moonlight
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires: ffmpeg-devel
 BuildRequires: libxtst-devel
 BuildRequires: libxrandr-devel
